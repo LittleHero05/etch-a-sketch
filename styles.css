@@ -1,16 +1,18 @@
 .container {
-    display: flex;
-    flex-flow: wrap;
-    max-width: 480px;
-    margin: auto;
-}
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  grid-column-gap: 0;
+  max-width: 480px;
+  margin: auto;
+} 
 
 * {
     box-sizing: border-box;
   }
-
-.container>div:nth-child(17n + 1) {
+/*
+.container>div:nth-child(size * n + 1) {
     width: 100%;
     border: 0;
     height: 0;
   }
+*/

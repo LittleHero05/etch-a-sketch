@@ -1,18 +1,27 @@
 const container = document.querySelector('.container');
 
-
-function getValue() {
+function gridfromrange() {
         const range = document.querySelector('#size');
         var size = range.value;
-
-        console.log(size);
+        container.innerHTML = '';
+        h = 480 / size;
+        color = getColor();
+        container.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+        container.style.gridTemplateRows = `repeat(${size}, 1fr)`;
+        for(i = 0; i < size*size; i++) {
+                const sqrs = document.createElement("div");
+                sqrs.setAttribute('style',`height: ${h}px; width: ${h}px; background: grey;`);
+                sqrs.addEventListener("mouseover", () => {
+                                sqrs.style.background = color;
+                        })
+                
+                container.appendChild(sqrs);
+        }
 }
 
-for(i = 0; i < 256; i++) {
-        const sqrs = document.createElement("div");
-        sqrs.setAttribute('style','height: 30px; width: 30px; background: grey;');
-        sqrs.addEventListener("mouseover", () => {
-                sqrs.style.background = 'blue';
-        })
-        container.appendChild(sqrs);
+function getColor() { 
+        const colorInput = document.querySelector('#color');
+        const color = colorInput.value;
+        return color;
 }
+
